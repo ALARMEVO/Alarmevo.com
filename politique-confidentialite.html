@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body>
+  <body data-analytics-id="">
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="./index.html" aria-label="Aller à l'accueil">
@@ -48,7 +48,7 @@
           <h2>1. Responsable de traitement</h2>
           <p>
             Le responsable de traitement est <strong>ALARMEVO</strong>.
-            <br><span class="muted">[Raison sociale + adresse + SIRET à compléter]</span>
+            <br><span class="muted">ALARMEVO, EURL, Herblay (Île-de-France), SIREN 909 125 957</span>
           </p>
         </div>
 
@@ -109,8 +109,8 @@
             limitation, portabilité (selon cas).
           </p>
           <p>
-            Pour exercer vos droits : <a href="mailto:contact@alarmevo.com">contact@alarmevo.com</a>
-            <span class="muted">[ou adresse postale à compléter]</span>.
+            Pour exercer vos droits : <a href="mailto:contactalarmevo@gmail.com">contactalarmevo@gmail.com</a>
+            <span class="muted">ou par courrier à Herblay (Île-de-France).</span>
           </p>
           <p class="muted">
             Vous pouvez aussi introduire une réclamation auprès de la CNIL si vous estimez que vos droits ne sont pas respectés.
@@ -128,6 +128,14 @@
         </div>
 
         <div class="card mt-24">
+          <h2>8 bis. Google Analytics</h2>
+          <p>
+            Nous utilisons Google Analytics pour mesurer l’audience du site. Les données sont collectées
+            uniquement après votre consentement via le bandeau de cookies.
+          </p>
+        </div>
+
+        <div class="card mt-24">
           <h2>9. Sécurité</h2>
           <p>
             Nous mettons en œuvre des mesures techniques et organisationnelles pour protéger les données.
@@ -142,6 +150,19 @@
       </div>
     </section>
   </main>
+
+  <div class="cookie-banner" data-cookie-banner hidden>
+    <div class="cookie-content">
+      <div>
+        <strong>Cookies & mesure d’audience</strong>
+        <p class="muted">Nous utilisons Google Analytics uniquement si vous l’acceptez. Vous pouvez changer d’avis à tout moment.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-ghost" type="button" data-cookie-refuse>Refuser</button>
+        <button class="btn btn-primary" type="button" data-cookie-accept>Accepter</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-bottom">
