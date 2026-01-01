@@ -13,26 +13,39 @@ if (!empty($_POST["website"])) {
 }
 
 // Récupération + nettoyage
-$name    = trim($_POST["name"] ?? "");
-$company = trim($_POST["company"] ?? "");
-$email   = trim($_POST["email"] ?? "");
-$phone   = trim($_POST["phone"] ?? "");
-$service = trim($_POST["service"] ?? "");
+function sanitize_header_value($value) {
+  return str_replace(["\r", "\n"], "", trim($value));
+}
+
+$name    = sanitize_header_value($_POST["name"] ?? "");
+$company = sanitize_header_value($_POST["company"] ?? "");
+$email   = sanitize_header_value($_POST["email"] ?? "");
+$phone   = sanitize_header_value($_POST["phone"] ?? "");
+$service = sanitize_header_value($_POST["service"] ?? "");
 $message = trim($_POST["message"] ?? "");
 
+if ($service === "") {
+  $service = "Demande de contact";
+}
+
+if ($message === "") {
+  $message = "Demande de rappel depuis le formulaire rapide.";
+}
+
 // Validation minimale
-if ($name === "" || $email === "" || $phone === "" || $message === "") {
+if ($name === "" || $phone === "" || $message === "") {
   http_response_code(400);
   exit("Merci de remplir tous les champs obligatoires.");
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($email !== "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
   exit("Email invalide.");
 }
 
 // CONFIG : mets ton email pro ici
 $to = "contactalarmevo@gmail.com";
+$from = "contact@alarmevo.com";
 
 // Sujet + contenu
 $subject = "Nouveau message via alarmevo.com — " . $service;
@@ -50,8 +63,11 @@ $body .= "IP: " . ($_SERVER["REMOTE_ADDR"] ?? "unknown") . "\n";
 $headers = [];
 $headers[] = "MIME-Version: 1.0";
 $headers[] = "Content-Type: text/plain; charset=UTF-8";
-// Reply-To = le client (tu peux répondre direct)
-$headers[] = "Reply-To: " . $email;
+$headers[] = "From: ALARMEVO <" . $from . ">";
+if ($email !== "") {
+  // Reply-To = le client (tu peux répondre direct)
+  $headers[] = "Reply-To: " . $email;
+}
 
 // Envoi
 $ok = mail($to, $subject, $body, implode("\r\n", $headers));
