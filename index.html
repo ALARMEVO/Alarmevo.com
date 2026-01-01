@@ -80,18 +80,23 @@
               <p>Une estimation claire, sans bla-bla.</p>
             </div>
 
-            <form class="mini-form" action="#" method="post" novalidate>
+            <form class="mini-form" action="send-mail.php" method="post">
+              <input type="text" name="website" autocomplete="off" tabindex="-1" class="hp-field">
               <div class="field">
                 <label for="name">Nom</label>
-                <input id="name" name="name" type="text" placeholder="Votre nom" autocomplete="name" />
+                <input id="name" name="name" type="text" placeholder="Votre nom" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="vous@email.com" autocomplete="email" />
               </div>
               <div class="field">
                 <label for="phone">Téléphone</label>
-                <input id="phone" name="phone" type="tel" placeholder="06 00 00 00 00" autocomplete="tel" />
+                <input id="phone" name="phone" type="tel" placeholder="06 00 00 00 00" autocomplete="tel" required />
               </div>
               <div class="field">
                 <label for="need">Besoin</label>
-                <select id="need" name="need">
+                <select id="need" name="service">
                   <option>Alarme intrusion</option>
                   <option>Vidéosurveillance IP</option>
                   <option>Contrôle d’accès</option>
@@ -99,8 +104,9 @@
                   <option>Audit & conseil</option>
                 </select>
               </div>
+              <input type="hidden" name="message" value="Demande de rappel depuis le formulaire rapide.">
               <button class="btn btn-primary btn-block" type="submit">Être rappelé</button>
-              <p class="fineprint">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="fineprint">Réponse sous 24h ouvrées. Pas de spam.</p>
             </form>
           </div>
         </div>
@@ -155,14 +161,14 @@
             <div class="icon">🛠️</div>
             <h3>Maintenance & support</h3>
             <p>Entretien régulier, dépannage, réparation, mise à jour et vérifications périodiques.</p>
-            <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at.</p>
+            <p class="muted">Contrats souples, interventions rapides et suivi préventif pour garder vos équipements fiables.</p>
           </article>
 
           <article class="card">
             <div class="icon">🧠</div>
             <h3>Audit & conseil</h3>
             <p>Évaluation des risques, recommandations adaptées, formation des utilisateurs aux bonnes pratiques.</p>
-            <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque.</p>
+            <p class="muted">Priorités claires, budget maîtrisé et plan d’action concret pour sécuriser vos espaces.</p>
           </article>
         </div>
       </div>
@@ -180,10 +186,10 @@
           <div class="card">
             <h3>Notre mission</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur,
-              nisi nisl aliquet nunc, non luctus arcu lorem a mauris.
+              Offrir une sécurité fiable et simple à utiliser, avec des installations propres, un suivi réactif et des
+              solutions adaptées aux réalités de chaque site.
             </p>
-            <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere, purus in.</p>
+            <p class="muted">Particuliers, commerces et entreprises : nous adaptons chaque projet à vos usages.</p>
           </div>
 
           <div class="card">
@@ -201,15 +207,15 @@
         <div class="grid-3 mt-24">
           <div class="card soft">
             <h3>Clarté</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Des explications transparentes et un devis détaillé, sans surprise.</p>
           </div>
           <div class="card soft">
             <h3>Discrétion</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Interventions respectueuses de vos locaux, avec un câblage soigné.</p>
           </div>
           <div class="card soft">
             <h3>Durabilité</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Matériel fiable, maintenance régulière et conseils pour durer.</p>
           </div>
         </div>
       </div>
@@ -220,7 +226,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Réalisations</h2>
-          <p class="muted">Quelques exemples (à remplacer par tes vrais projets).</p>
+          <p class="muted">Quelques exemples de projets pour illustrer notre expertise.</p>
         </div>
 
         <div class="toolbar">
@@ -235,7 +241,7 @@
             <div class="project-media"><div class="project-placeholder">🚨</div></div>
             <div class="project-body">
               <h3>Installation alarme — Maison</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Centrale, détecteurs et scénarios paramétrés selon les habitudes des occupants.</p>
               <div class="tags"><span class="tag">Sans fil</span><span class="tag">Détecteurs</span><span class="tag">Paramétrage</span></div>
             </div>
           </article>
@@ -244,7 +250,7 @@
             <div class="project-media"><div class="project-placeholder">📹</div></div>
             <div class="project-body">
               <h3>Caméras IP — Boutique</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Caméras HD, enregistreur sécurisé et accès à distance sur mobile.</p>
               <div class="tags"><span class="tag">IP</span><span class="tag">Mobile</span><span class="tag">Enregistrement</span></div>
             </div>
           </article>
@@ -253,7 +259,7 @@
             <div class="project-media"><div class="project-placeholder">🛂</div></div>
             <div class="project-body">
               <h3>Contrôle d’accès — Bureau</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Badges nominatifs, horaires d’accès et suivi des passages.</p>
               <div class="tags"><span class="tag">Badges</span><span class="tag">Interphone</span><span class="tag">Droits</span></div>
             </div>
           </article>
@@ -262,7 +268,7 @@
             <div class="project-media"><div class="project-placeholder">📡</div></div>
             <div class="project-body">
               <h3>Télésurveillance — Entrepôt</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Surveillance multi-zones, alertes et enregistrement continu.</p>
               <div class="tags"><span class="tag">Accès distant</span><span class="tag">Alertes</span><span class="tag">Zones</span></div>
             </div>
           </article>
@@ -271,7 +277,7 @@
             <div class="project-media"><div class="project-placeholder">🛠️</div></div>
             <div class="project-body">
               <h3>Dépannage & mise à jour</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Diagnostic rapide, remplacement des pièces et remise en service.</p>
               <div class="tags"><span class="tag">Support</span><span class="tag">Tests</span><span class="tag">Maintenance</span></div>
             </div>
           </article>
@@ -280,7 +286,7 @@
             <div class="project-media"><div class="project-placeholder">🔐</div></div>
             <div class="project-body">
               <h3>Biométrie — Accès sécurisé</h3>
-              <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="muted">Accès biométrique avec journalisation et gestion des droits.</p>
               <div class="tags"><span class="tag">Biométrie</span><span class="tag">Logs</span><span class="tag">Sécurité</span></div>
             </div>
           </article>
@@ -300,15 +306,15 @@
           <div class="card">
             <h3>Nous joindre</h3>
             <ul class="contact-list">
-              <li><span class="dot"></span> Téléphone : <a href="tel:+33000000000">+33 0 00 00 00 00</a></li>
+              <li><span class="dot"></span> Téléphone : <a href="tel:+33600000000">+33 6 00 00 00 00</a></li>
               <li><span class="dot"></span> Email : <a href="mailto:contact@alarmevo.com">contact@alarmevo.com</a></li>
-              <li><span class="dot"></span> Zone : <span class="muted">Herblay-Sur-Seine</span></li>
+              <li><span class="dot"></span> Zone : <span class="muted">Herblay-sur-Seine & Île-de-France</span></li>
             </ul>
 
             <div class="divider"></div>
 
             <h4>Horaires</h4>
-            <p class="muted"> Lundi au Vendredi 8h–18h.</p>
+            <p class="muted">Lundi au vendredi 8h–18h, samedi sur rendez-vous.</p>
 
 <div class="map-container">
   <iframe
@@ -320,7 +326,7 @@
 </div>
           </div>
 
-          <div class="card">
+            <div class="card">
             <h3>Demande de devis</h3>
 
 <form class="form" action="send-mail.php" method="post">
@@ -398,7 +404,7 @@
             <small>alarmevo.com</small>
           </span>
         </div>
-        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel.</p>
+        <p class="muted">Entreprise locale spécialisée dans l’installation, la maintenance et le suivi de vos systèmes de sécurité.</p>
       </div>
 
       <div>
@@ -414,15 +420,15 @@
       <div>
         <h4>Contact</h4>
         <ul class="footer-links">
-          <li><a href="tel:+33000000000">+33 0 00 00 00 00</a></li>
+          <li><a href="tel:+33600000000">+33 6 00 00 00 00</a></li>
           <li><a href="mailto:contact@alarmevo.com">contact@alarmevo.com</a></li>
-          <li><span class="muted">Zone : Lorem Ipsum</span></li>
+          <li><span class="muted">Zone : Herblay-sur-Seine & Île-de-France</span></li>
         </ul>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <small>© <span id="year"></span> <a href=""">ALARMEVO.</a> Tous droits réservés.</small>
+      <small>© <span id="year"></span> <a href="index.html">ALARMEVO.</a> Tous droits réservés.</small>
       <small><a href="./mentions-legales.html" class="muted">Mentions légales</a> • <a href="./politique-confidentialite.html" class="muted">Politique de confidentialité</a></small>
     </div>
   </footer>
