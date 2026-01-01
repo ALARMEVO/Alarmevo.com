@@ -85,3 +85,48 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((sec) => observer.observe(sec));
+
+// Bandeau cookies + Google Analytics
+const cookieBanner = document.querySelector("[data-cookie-banner]");
+const cookieAccept = document.querySelector("[data-cookie-accept]");
+const cookieRefuse = document.querySelector("[data-cookie-refuse]");
+const cookieStorageKey = "cookieConsent";
+
+function loadGoogleAnalytics() {
+  const analyticsId = document.body?.dataset?.analyticsId?.trim();
+  if (!analyticsId) return;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", analyticsId, { anonymize_ip: true });
+}
+
+function setCookieChoice(choice) {
+  localStorage.setItem(cookieStorageKey, choice);
+  if (cookieBanner) cookieBanner.hidden = true;
+  if (choice === "accepted") loadGoogleAnalytics();
+}
+
+if (cookieBanner) {
+  const savedChoice = localStorage.getItem(cookieStorageKey);
+  if (!savedChoice) {
+    cookieBanner.hidden = false;
+  } else if (savedChoice === "accepted") {
+    loadGoogleAnalytics();
+  }
+
+  if (cookieAccept) {
+    cookieAccept.addEventListener("click", () => setCookieChoice("accepted"));
+  }
+  if (cookieRefuse) {
+    cookieRefuse.addEventListener("click", () => setCookieChoice("refused"));
+  }
+}
