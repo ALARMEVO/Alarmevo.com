@@ -130,3 +130,64 @@ if (cookieBanner) {
     cookieRefuse.addEventListener("click", () => setCookieChoice("refused"));
   }
 }
+
+// Soumission des formulaires (devis / contact)
+const contactForms = document.querySelectorAll(".js-contact-form");
+
+async function submitContactForm(form) {
+  const statusEl = form.querySelector("[data-form-status]");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const formData = new FormData(form);
+
+  // honeypot anti-spam
+  if (formData.get("website")) {
+    form.reset();
+    return;
+  }
+
+  const payload = Object.fromEntries(formData.entries());
+  payload.source = form.dataset.formSource || "contact-form";
+  payload.path = window.location.href;
+
+  const originalText = submitBtn ? submitBtn.textContent : "";
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Envoi...";
+  }
+  if (statusEl) statusEl.textContent = "";
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success) {
+      const message = data.message || "Envoi impossible pour le moment.";
+      throw new Error(message);
+    }
+
+    if (statusEl) statusEl.textContent = "Message envoyé ✅";
+    const successUrl = form.dataset.successUrl;
+    if (successUrl) {
+      window.location.href = successUrl;
+    } else {
+      form.reset();
+    }
+  } catch (err) {
+    if (statusEl) statusEl.textContent = err.message || "Erreur inattendue.";
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  }
+}
+
+contactForms.forEach((form) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitContactForm(form);
+  });
+});
