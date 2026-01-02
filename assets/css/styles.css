@@ -82,10 +82,18 @@ p { margin: 0 0 12px; }
 }
 
 .logo-img{
-  width:100px;
-  height:auto;
-  object-fit:contain;
+  width: 190px;
+  height: auto;
+  object-fit: contain;
   filter: drop-shadow(0 10px 30px rgba(0,0,0,.45));
+}
+
+.brand{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
 }
 
 .nav-toggle{
@@ -172,6 +180,7 @@ p { margin: 0 0 12px; }
     align-items: center;
     gap: 16px;
   }
+  .logo-img{ width: 220px; }
   .nav-list{
     display: flex;
     gap: 6px;
