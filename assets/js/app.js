@@ -86,52 +86,13 @@ const observer = new IntersectionObserver(
 
 sections.forEach((sec) => observer.observe(sec));
 
-// Bandeau cookies + Google Analytics
-const cookieBanner = document.querySelector("[data-cookie-banner]");
-const cookieAccept = document.querySelector("[data-cookie-accept]");
-const cookieRefuse = document.querySelector("[data-cookie-refuse]");
-const cookieStorageKey = "cookieConsent";
+// Configuration formulaire
+const CONTACT_ENDPOINT = "/api/contact";
+const FALLBACK_EMAIL = "contactalarmevo@gmail.com";
+const ENABLE_MAILTO_FALLBACK =
+  (document.body?.dataset?.mailtoFallback || "true").toLowerCase() !== "false";
 
-function loadGoogleAnalytics() {
-  const analyticsId = document.body?.dataset?.analyticsId?.trim();
-  if (!analyticsId) return;
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", analyticsId, { anonymize_ip: true });
-}
-
-function setCookieChoice(choice) {
-  localStorage.setItem(cookieStorageKey, choice);
-  if (cookieBanner) cookieBanner.hidden = true;
-  if (choice === "accepted") loadGoogleAnalytics();
-}
-
-if (cookieBanner) {
-  const savedChoice = localStorage.getItem(cookieStorageKey);
-  if (!savedChoice) {
-    cookieBanner.hidden = false;
-  } else if (savedChoice === "accepted") {
-    loadGoogleAnalytics();
-  }
-
-  if (cookieAccept) {
-    cookieAccept.addEventListener("click", () => setCookieChoice("accepted"));
-  }
-  if (cookieRefuse) {
-    cookieRefuse.addEventListener("click", () => setCookieChoice("refused"));
-  }
-}
-
-// Soumission des formulaires (devis / contact)
+// Soumission du formulaire de contact principal
 const contactForms = document.querySelectorAll(".js-contact-form");
 
 async function submitContactForm(form) {
@@ -157,7 +118,7 @@ async function submitContactForm(form) {
   if (statusEl) statusEl.textContent = "";
 
   try {
-    const res = await fetch("/api/contact", {
+    const res = await fetch(CONTACT_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -177,6 +138,18 @@ async function submitContactForm(form) {
     }
   } catch (err) {
     if (statusEl) statusEl.textContent = err.message || "Erreur inattendue.";
+    if (ENABLE_MAILTO_FALLBACK) {
+      const mailBody = [
+        `Nom: ${formData.get("name") || ""}`,
+        `Téléphone: ${formData.get("phone") || ""}`,
+        `Email: ${formData.get("email") || ""}`,
+        `Besoin: ${formData.get("need") || formData.get("service") || ""}`,
+        `Message: ${formData.get("message") || ""}`,
+        `Source: ${payload.source}`,
+        `Page: ${payload.path}`
+      ].join("%0D%0A");
+      window.location.href = `mailto:${FALLBACK_EMAIL}?subject=Demande%20de%20contact%20ALARMEVO&body=${mailBody}`;
+    }
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
@@ -191,3 +164,41 @@ contactForms.forEach((form) => {
     submitContactForm(form);
   });
 });
+
+// Témoignages slider (contact colonne)
+const testimonialCard = document.querySelector("[data-testimonial]");
+if (testimonialCard) {
+  const track = testimonialCard.querySelector(".testimonial-track");
+  const items = Array.from(testimonialCard.querySelectorAll(".testimonial"));
+  const dots = Array.from(testimonialCard.querySelectorAll("[data-testimonial-dot]"));
+  let index = 0;
+  let timer;
+
+  const setActive = (i) => {
+    items.forEach((item, idx) => item.classList.toggle("active", idx === i));
+    dots.forEach((dot, idx) => dot.classList.toggle("active", idx === i));
+    index = i;
+  };
+
+  const next = () => setActive((index + 1) % items.length);
+
+  const start = () => {
+    timer = setInterval(next, 4500);
+  };
+  const stop = () => {
+    if (timer) clearInterval(timer);
+  };
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      stop();
+      setActive(i);
+      start();
+    });
+  });
+
+  testimonialCard.addEventListener("mouseenter", stop);
+  testimonialCard.addEventListener("mouseleave", start);
+  setActive(0);
+  start();
+}

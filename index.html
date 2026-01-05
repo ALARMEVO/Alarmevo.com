@@ -38,14 +38,22 @@
 
   <main>
     <!-- ACCUEIL -->
-    <section class="hero" id="accueil">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="badge">🔒 Sécurité • Installation • Maintenance</p>
+    <section class="hero hero--bg" id="accueil">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-center">
+        <div class="hero-content" data-reveal>
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            <b>Intervention </b> —  Île-de-France
+          </div>
+
           <h1>Protégez ce qui compte <span class="gradient-text">simplement</span>, efficacement.</h1>
-          <p class="lead">
+
+          <p class="sub">
             ALARMEVO installe et maintient des systèmes d’alarme intrusion, vidéosurveillance IP et contrôle d’accès
-            pour particuliers et professionnels.
+            pour particuliers et professionnels. Audit, pose propre, suivi continu.
           </p>
 
           <div class="hero-actions">
@@ -53,58 +61,20 @@
             <a class="btn btn-ghost" href="#realisations">Voir les réalisations</a>
           </div>
 
-          <div class="trust-row">
-            <div class="trust-item">
-              <strong>Intervention rapide</strong>
-              <span>Déploiement & dépannage</span>
-            </div>
-            <div class="trust-item">
-              <strong>Solutions sur-mesure</strong>
-              <span>Maison • Boutique • Entrepôt</span>
-            </div>
-            <div class="trust-item">
-              <strong>Suivi & maintenance</strong>
-              <span>Préventif + support</span>
-            </div>
+          <div class="meta">
+            <span class="pill"><span class="dot"></span> Intervention rapide</span>
+            <span class="pill"><span class="dot"></span> Solutions sur-mesure</span>
+            <span class="pill"><span class="dot"></span> Suivi & maintenance</span>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="card glass">
-            <div class="card-header">
-              <h2>Audit sécurité gratuit (selon zone)</h2>
-              <p>Une estimation claire, sans bla-bla.</p>
-            </div>
-
-            <form class="mini-form js-contact-form" data-form-source="hero" data-success-url="merci.html" novalidate>
-              <input type="text" name="website" autocomplete="off" tabindex="-1" class="hp-field">
-              <div class="field">
-                <label for="name">Nom</label>
-                <input id="name" name="name" type="text" placeholder="Votre nom" autocomplete="name" />
-              </div>
-              <div class="field">
-                <label for="phone">Téléphone</label>
-                <input id="phone" name="phone" type="tel" placeholder="06 00 00 00 00" autocomplete="tel" />
-              </div>
-              <div class="field">
-                <label for="need">Besoin</label>
-                <select id="need" name="need">
-                  <option>Alarme intrusion</option>
-                  <option>Vidéosurveillance IP</option>
-                  <option>Contrôle d’accès</option>
-                  <option>Maintenance / dépannage</option>
-                  <option>Audit & conseil</option>
-                </select>
-              </div>
-              <button class="btn btn-primary btn-block" type="submit">Être rappelé</button>
-              <p class="fineprint" data-form-status>Nous vous rappelons rapidement avec une estimation claire et sans engagement.</p>
-            </form>
-          </div>
+        <div class="scroll-hint" aria-hidden="true">
+          <span></span>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES (sur la home) -->
+        <!-- SERVICES (sur la home) -->
     <section class="section" aria-label="Services">
       <div class="container">
         <div class="section-head">
@@ -114,7 +84,7 @@
 
         <div class="grid-3">
           <article class="card">
-            <div class="icon">🚨</div>
+            <div class="icon"><img src="assets/img/icon-alarme.png" alt="Alarme intrusion"></div>
             <h3>Alarme intrusion</h3>
             <p>Installation filaire et sans fil, détecteurs, sirènes, centrale, paramétrage complet.</p>
             <ul class="checklist">
@@ -125,7 +95,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">📹</div>
+            <div class="icon"><img src="assets/img/icon-video.png" alt="Vid?osurveillance IP"></div>
             <h3>Vidéosurveillance IP</h3>
             <p>Caméras IP, enregistreurs, accès à distance via application mobile, télésurveillance (selon besoin).</p>
             <ul class="checklist">
@@ -136,7 +106,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">🛂</div>
+            <div class="icon"><img src="assets/img/icon-acces.png" alt="Contr?le d'acc?s"></div>
             <h3>Contrôle d’accès</h3>
             <p>Badges, biométrie, interphones, lecteurs, gestion des entrées/sorties pour sites sécurisés.</p>
             <ul class="checklist">
@@ -149,14 +119,14 @@
 
         <div class="grid-2 mt-24">
           <article class="card">
-            <div class="icon">🛠️</div>
+            <div class="icon"><img src="assets/img/icon-maintenance.png" alt="Maintenance & support"></div>
             <h3>Maintenance & support</h3>
             <p>Entretien régulier, dépannage, réparation, mise à jour et vérifications périodiques.</p>
             <p class="muted">Contrats flexibles, interventions rapides et suivi transparent après installation.</p>
           </article>
 
           <article class="card">
-            <div class="icon">🧠</div>
+            <div class="icon"><img src="assets/img/icon-audit.png" alt="Audit & conseil"></div>
             <h3>Audit & conseil</h3>
             <p>Évaluation des risques, recommandations adaptées, formation des utilisateurs aux bonnes pratiques.</p>
             <p class="muted">Un diagnostic précis pour sécuriser vos accès, vos équipements et vos habitudes.</p>
@@ -212,7 +182,7 @@
     </section>
 
     <!-- REALISATIONS -->
-    <section class="section" id="realisations">
+    <section class="section realizations-hero" id="realisations">
       <div class="container">
         <div class="section-head">
           <h2>Réalisations</h2>
@@ -228,7 +198,7 @@
 
         <div class="projects" id="projects">
           <article class="project-card" data-category="alarme">
-            <div class="project-media"><div class="project-placeholder">🚨</div></div>
+            <div class="project-media"><img src="assets/img/project-alarme.jpg" alt="Installation alarme maison"></div>
             <div class="project-body">
               <h3>Installation alarme — Maison</h3>
               <p class="muted">Centrale, détecteurs et application mobile configurés sur mesure.</p>
@@ -237,7 +207,7 @@
           </article>
 
           <article class="project-card" data-category="video">
-            <div class="project-media"><div class="project-placeholder">📹</div></div>
+            <div class="project-media"><img src="assets/img/project-video-1.jpg" alt="Caméras IP boutique"></div>
             <div class="project-body">
               <h3>Caméras IP — Boutique</h3>
               <p class="muted">Installation complète avec vision nocturne et accès sécurisé à distance.</p>
@@ -246,7 +216,7 @@
           </article>
 
           <article class="project-card" data-category="acces">
-            <div class="project-media"><div class="project-placeholder">🛂</div></div>
+            <div class="project-media"><img src="assets/img/project-acces.jpg" alt="Contrôle d'accès bureau"></div>
             <div class="project-body">
               <h3>Contrôle d’accès — Bureau</h3>
               <p class="muted">Gestion des entrées par badges et suivi des accès en temps réel.</p>
@@ -255,7 +225,7 @@
           </article>
 
           <article class="project-card" data-category="video">
-            <div class="project-media"><div class="project-placeholder">📡</div></div>
+            <div class="project-media"><img src="assets/img/project-video.jpg" alt="Télésurveillance entrepôt"></div>
             <div class="project-body">
               <h3>Télésurveillance — Entrepôt</h3>
               <p class="muted">Caméras IP, alertes instantanées et zones sensibles sécurisées.</p>
@@ -264,7 +234,7 @@
           </article>
 
           <article class="project-card" data-category="alarme">
-            <div class="project-media"><div class="project-placeholder">🛠️</div></div>
+            <div class="project-media"><img src="assets/img/project-maintenance.jpg" alt="Dépannage et mise à jour"></div>
             <div class="project-body">
               <h3>Dépannage & mise à jour</h3>
               <p class="muted">Maintenance corrective, remise en service rapide et tests complets.</p>
@@ -273,13 +243,42 @@
           </article>
 
           <article class="project-card" data-category="acces">
-            <div class="project-media"><div class="project-placeholder">🔐</div></div>
+            <div class="project-media"><img src="assets/img/project-audit.jpg" alt="Biométrie accès sécurisé"></div>
             <div class="project-body">
               <h3>Biométrie — Accès sécurisé</h3>
               <p class="muted">Installation biométrique avec journalisation et gestion des droits.</p>
               <div class="tags"><span class="tag">Biométrie</span><span class="tag">Logs</span><span class="tag">Sécurité</span></div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section brands" aria-label="Marques partenaires">
+      <div class="container">
+        <div class="section-head">
+          <h2>Marques & gammes utilisées</h2>
+          <p class="muted">Matériel reconnu : fiabilité, sécurité et compatibilité.</p>
+        </div>
+
+        <div class="brand-marquee">
+          <div class="brand-track">
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/dahua-logo.png" alt="Dahua"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Hikvision-logo.png" alt="Hikvision"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Honeywell-Logo.png" alt="Honeywell"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/logo-aritech.png" alt="Aritech"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/stid-logo.jpg" alt="Stid"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/synchronic-logo.jpeg" alt="Synchronic"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Vanderbilt-Logo.jpg" alt="Vanderbilt"></div>
+
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/dahua-logo.png" alt="Dahua"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Hikvision-logo.png" alt="Hikvision"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Honeywell-Logo.png" alt="Honeywell"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/logo-aritech.png" alt="Aritech"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/stid-logo.jpg" alt="Stid"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/synchronic-logo.jpeg" alt="Synchronic"></div>
+            <div class="brand-item"><img src="assets/img/logo-marques-produits/Vanderbilt-Logo.jpg" alt="Vanderbilt"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -306,14 +305,56 @@
             <h4>Horaires</h4>
             <p class="muted"> Lundi au Vendredi 8h–18h.</p>
 
-<div class="map-container">
-  <iframe
-    title="Zone d’intervention ALARMEVO"
-    src="https://www.google.com/maps?q=Herblay&output=embed"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+            <div class="divider"></div>
+
+            <h4>Ils nous font confiance</h4>
+            <div class="testimonial-card glass" data-testimonial>
+              <div class="testimonial-track">
+                <div class="testimonial active">
+                  <p>“Installation propre, configuration complète et rappel rapide. On se sent enfin en sécurité.”</p>
+                  <div class="testimonial-meta">
+                    <strong>L. Martin</strong><span>Particulier, Herblay</span>
+                  </div>
+                  <span class="testimonial-tag">Alarme intrusion</span>
+                </div>
+                <div class="testimonial">
+                  <p>“Caméras IP posées en une journée, appli configurée. Équipe ponctuelle et discrète.”</p>
+                  <div class="testimonial-meta">
+                    <strong>S. Dubois</strong><span>Boutique, Argenteuil</span>
+                  </div>
+                  <span class="testimonial-tag">Vidéosurveillance</span>
+                </div>
+                <div class="testimonial">
+                  <p>“Contrôle d'accès badges + interphone : clair, bien documenté, support réactif.”</p>
+                  <div class="testimonial-meta">
+                    <strong>M. Leroy</strong><span>Bureaux, Cergy</span>
+                  </div>
+                  <span class="testimonial-tag">Contrôle d'accès</span>
+                </div>
+                <div class="testimonial">
+                  <p>“Maintenance annuelle et dépannage sous 48h, suivi sérieux, pas de surprise sur les coûts.”</p>
+                  <div class="testimonial-meta">
+                    <strong>A. Bernard</strong><span>Entrepôt, Sartrouville</span>
+                  </div>
+                  <span class="testimonial-tag">Maintenance</span>
+                </div>
+                <div class="testimonial">
+                  <p>“Audit précis, devis clair, déploiement fluide. On a enfin une sécurité cohérente.”</p>
+                  <div class="testimonial-meta">
+                    <strong>J. Fournier</strong><span>PME, Saint-Denis</span>
+                  </div>
+                  <span class="testimonial-tag">Audit & conseil</span>
+                </div>
+              </div>
+              <div class="testimonial-dots" aria-label="Navigation témoignages">
+                <button type="button" class="dot active" data-testimonial-dot="0" aria-label="Témoignage 1"></button>
+                <button type="button" class="dot" data-testimonial-dot="1" aria-label="Témoignage 2"></button>
+                <button type="button" class="dot" data-testimonial-dot="2" aria-label="Témoignage 3"></button>
+                <button type="button" class="dot" data-testimonial-dot="3" aria-label="Témoignage 4"></button>
+                <button type="button" class="dot" data-testimonial-dot="4" aria-label="Témoignage 5"></button>
+              </div>
+            </div>
+
           </div>
 
           <div class="card">
@@ -430,19 +471,6 @@
       <small><a href="./mentions-legales.html" class="muted">Mentions légales</a> • <a href="./politique-confidentialite.html" class="muted">Politique de confidentialité</a></small>
     </div>
   </footer>
-
-  <div class="cookie-banner" data-cookie-banner hidden>
-    <div class="cookie-content">
-      <div>
-        <strong>Cookies & mesure d’audience</strong>
-        <p class="muted">Nous utilisons Google Analytics uniquement si vous l’acceptez. Vous pouvez changer d’avis à tout moment.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-ghost" type="button" data-cookie-refuse>Refuser</button>
-        <button class="btn btn-primary" type="button" data-cookie-accept>Accepter</button>
-      </div>
-    </div>
-  </div>
 
   <script src="assets/js/app.js"></script>
 </body>
